@@ -29,6 +29,26 @@
 	    	$this->db->group_by('TipoFac');
 	    	$query = $this->db->get('saa_lib');
 		    return $query->result_array();
+	    } 
+	     //Total Credito por sucursal
+	    public function get_serie_sucursal(){
+	    	$this->db->select('Monto');
+	    	$this->db->where("TipoFac = 'A'");
+	    	$this->db->where("CodEmp", $this->session->userdata('empresa'));
+	    	$this->db->limit('12');
+	    	$query = $this->db->get('saa_lib');
+		     $result=$query->result_array();
+		     $aux=array();
+		     $i=0;
+		    foreach ($query->result() as $fila)
+			{$aux[$i]=$fila->Monto*1;
+			$i++;
+			}
+			return $aux;
+		/*
+		     for($i=0; $i<count($result);$i++){
+		     	$aux[$i]=$result['Monto'];
+		     }*/
 	    }
 
 	    //Total facturado

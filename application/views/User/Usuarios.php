@@ -1,4 +1,5 @@
- <div style="position: absolute; width:80%" ng-controller="GUsuarios" layout="column" flex id="content" >
+<div class="marca"></div>
+<div style="position: absolute; width:80%" ng-controller="GUsuarios" layout="column" flex id="content" >
     <div class="container" style="width:95%">
         <h1 >Usuarios</h1>
 

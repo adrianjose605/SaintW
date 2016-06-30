@@ -1,4 +1,5 @@
-  <div style="position: relative;" ng-controller="Facturas" layout="column" flex id="content">
+<div class="marca"></div>
+<div style="position: relative;" ng-controller="Facturas" layout="column" flex id="content">
 
     <div class="container " style="width:95%" >
         <h1>Listado de Facturas</h1>

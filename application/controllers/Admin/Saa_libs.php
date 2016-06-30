@@ -131,6 +131,12 @@ public function totalCredito(){
     echo json_encode($this->Saa_lib_model->get_credito_sucursal());
 }
 
+public function serie_ventas(){
+   // $id=$this->input->get('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->Saa_lib_model->get_serie_sucursal());
+}
+
 public function totalFacturado(){
     header('Content-Type: application/json');
     echo json_encode($this->Saa_lib_model->get_facturado_sucursal());

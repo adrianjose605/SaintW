@@ -1,28 +1,40 @@
+<div ng-controller="Ctrl" layout="column" style="height:95%;" ng-cloak>
 <md-toolbar layout="row"  class="md-theme-indigo md-hue-2 md-whiteframe-z1" >
+<div class="col-xs-6">
     <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
             <span class="glyphicon glyphicon-align-justify"></span>
         </md-button>
-         <!--<img src="public/img/Imagen1.png" width="80" height="100">-->
-        
-        
-         <img src="public/img/SAINT.PNG">
+           <img src="public/img/MiniImagen1.png" width="12%" style="padding-top: 2%;">       
+            <img src="public/img/SAINT.PNG" height="55%">
     </div >
-   
-    <div class="md-toolbar-tools" style="padding-left: 60%">
+</div>
+<div class="col-xs-3 col-xs-offset-3">
+     <div class="md-toolbar-tools">
         
-        <md-button href="<?php echo base_url(); ?>usuarios/cerrar" class="md-icon-button" aria-label="More" style="padding-top: 10%">        
-        <md-icon class="center" md-svg-src="public/icons/arrow.svg" style="padding-top: 6%"></md-icon>
+        <md-button href="<?php echo base_url(); ?>usuarios/cerrar" class="md-icon-button" aria-label="More" style=" padding-top: 2%; width: 15%; height: 15%;" >        
+        <md-icon class="center" md-svg-src="public/icons/logout.svg" ></md-icon>
 
         </md-button>
-          <h4 style="padding-top: 6%"><?php echo $nombre; ?></h4>
+          <h4 ><?php echo $nombre; ?></h4>
     </div>
+
+</div>
+ 
  
 </md-toolbar>
-<div layout="row" flex ng-cloak >
-    <md-sidenav layout="column" class="md-sidenav-left  md-whiteframe-z4" md-is-locked-open="$mdMedia('gt-lg')" md-disable-backdrop md-whiteframe="4" md-component-id="left" style="height:88%">
-        <md-content layout-padding="">
-            <accordion close-others="oneAtATime">
+  <section layout="row" flex>
+    <md-sidenav
+        class="md-sidenav-left md-whiteframe-z4"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-disable-backdrop
+        md-whiteframe="4">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content layout-padding ng-controller="LeftCtrl">
+        <accordion close-others="oneAtATime">
 
                 <accordion-group>
                     <accordion-heading>
@@ -103,13 +115,11 @@
                 </accordion-group>
             <?php endif ?> 
             </accordion>
-            <h4>Rango de Fecha a Consultar</h4>
-            <md-datepicker ng-model="desde" md-placeholder="Desde"></md-datepicker>
-            <md-datepicker ng-model="hasta" md-placeholder="Hasta"></md-datepicker>
-            <div class="text-center">
-                <md-button class="md-raised md-primary">Consultar</md-button>
-            </div>
-        </md-content>
 
-      
+
+      </md-content>
     </md-sidenav>
+
+
+
+    <md-content flex layout-padding>

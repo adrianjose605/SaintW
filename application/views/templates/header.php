@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="public/angular-datepicker-master/dist/index.min.css">
         <link rel="stylesheet" href="public/bootstrap-timepicker/less/timepicker.less">
         <link rel="stylesheet" href="public/css/general.css">
-        <link rel="shortcut icon" type="image/png" href="public/img/favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="public/img/Imagen1.png"/>
 
 
       <!-- <script src="public/js/jquery-2.1.3.min.js"></script>
@@ -105,4 +105,4 @@
     </head>
 
     <body layout="column" ng-controller="AppCtrl" >
-    <div class="marca" ></div>
+   

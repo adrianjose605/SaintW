@@ -2,39 +2,50 @@ angular.module('saint')
 
 .controller('Dashboard', ['$scope','$http', us])
 
-
-
 	function us($scope,$http,$mdToast){
+         $scope.graf_ventas=angular.copy({});
+        
+        $scope.cargarSucursal=function(){
+        return $http.get('Sys/Sucursales/ver_sel').
+            success(function(data, status, headers, config) {       
+            $scope.sucursal_t=data;
+      
+            console.log($scope.sucursal_t);
+            }).
+            error(function(data, status, headers, config) {
+            console.log(status);
+                hacerToast('error','Ocurrio un Error al Cargar los Tipos de Jugadas');
+            });
+
+
+        }
+             
 		$http.get("Admin/Saa_libs/totalCredito/")
 			.success(function(data){
 				$scope.credito = data;
-			})
+			});
 
 		$http.get("Admin/Saa_libs/totalFacturado/")
 			.success(function(data){
 				$scope.facturado = data;
-			})
+			});
 		$http.get("Admin/Saa_libs/totalFacturas/")
 			.success(function(data){
 				$scope.facturas = data;
-			})
-	}
+			});
+        $http.get("Admin/Saa_libs/serie_ventas/").then(function(response) {
+            $scope.graf_ventas = response.data;
+             var data1=[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6];        
+            Highcharts.chart('container',
+            {xAxis: {categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+            },series: [{data:  $scope.graf_ventas}] });
+            // console.log( $scope.graf_ventas);
+            });
 
+    }
+            
 
-
-	Highcharts.chart('container', {
-
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-
-        series: [{
-            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-        }]
-    });
-
-    Highcharts.chart('container2', {
+  Highcharts.chart('container2', {
         chart: {
             type: 'column'
         },
@@ -67,7 +78,7 @@ angular.module('saint')
         },
 
         tooltip: {
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            headerFormat: '<span style="font-size:10px">{series.name}</span><br>',
             pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
         },
 
@@ -134,158 +145,59 @@ angular.module('saint')
                 name: 'Chrome',
                 id: 'Chrome',
                 data: [
-                    [
-                        'v40.0',
-                        5
-                    ],
-                    [
-                        'v41.0',
-                        4.32
-                    ],
-                    [
-                        'v42.0',
-                        3.68
-                    ],
-                    [
-                        'v39.0',
-                        2.96
-                    ],
-                    [
-                        'v36.0',
-                        2.53
-                    ],
-                    [
-                        'v43.0',
-                        1.45
-                    ],
-                    [
-                        'v31.0',
-                        1.24
-                    ],
-                    [
-                        'v35.0',
-                        0.85
-                    ],
-                    [
-                        'v38.0',
-                        0.6
-                    ],
-                    [
-                        'v32.0',
-                        0.55
-                    ],
-                    [
-                        'v37.0',
-                        0.38
-                    ],
-                    [
-                        'v33.0',
-                        0.19
-                    ],
-                    [
-                        'v34.0',
-                        0.14
-                    ],
-                    [
-                        'v30.0',
-                        0.14
-                    ]
+                    ['v40.0',5],
+                    ['v41.0',4.32],
+                    ['v42.0',3.68],
+                    ['v39.0',2.96],
+                    ['v36.0',2.53],
+                    ['v43.0',1.45],
+                    ['v31.0',1.24],
+                    ['v35.0',0.85],
+                    ['v38.0',0.6],
+                    ['v32.0',0.55],
+                    ['v37.0',0.38],
+                    ['v33.0',0.19],
+                    ['v34.0',0.14],
+                    ['v30.0',0.14]
                 ]
             }, {
                 name: 'Firefox',
                 id: 'Firefox',
                 data: [
-                    [
-                        'v35',
-                        2.76
-                    ],
-                    [
-                        'v36',
-                        2.32
-                    ],
-                    [
-                        'v37',
-                        2.31
-                    ],
-                    [
-                        'v34',
-                        1.27
-                    ],
-                    [
-                        'v38',
-                        1.02
-                    ],
-                    [
-                        'v31',
-                        0.33
-                    ],
-                    [
-                        'v33',
-                        0.22
-                    ],
-                    [
-                        'v32',
-                        0.15
-                    ]
+                    ['v35',2.76],
+                    ['v36',2.32],
+                    ['v37',2.31],
+                    ['v34',1.27],
+                    ['v38',1.02],
+                    ['v31',0.33],
+                    ['v33',0.22],
+                    ['v32',0.15]
                 ]
             }, {
                 name: 'Safari',
                 id: 'Safari',
                 data: [
-                    [
-                        'v8.0',
-                        2.56
-                    ],
-                    [
-                        'v7.1',
-                        0.77
-                    ],
-                    [
-                        'v5.1',
-                        0.42
-                    ],
-                    [
-                        'v5.0',
-                        0.3
-                    ],
-                    [
-                        'v6.1',
-                        0.29
-                    ],
-                    [
-                        'v7.0',
-                        0.26
-                    ],
-                    [
-                        'v6.2',
-                        0.17
-                    ]
+                    ['v8.0',2.56],
+                    ['v7.1',0.77],
+                    ['v5.1',0.42],
+                    ['v5.0',0.3],
+                    ['v6.1',0.29],
+                    ['v7.0',0.26],
+                    ['v6.2',0.17]
                 ]
             }, {
                 name: 'Opera',
                 id: 'Opera',
                 data: [
-                    [
-                        'v12.x',
-                        0.34
-                    ],
-                    [
-                        'v28',
-                        0.24
-                    ],
-                    [
-                        'v27',
-                        0.17
-                    ],
-                    [
-                        'v29',
-                        0.16
-                    ]
+                    ['v12.x',0.34],
+                    ['v28',0.24],
+                    ['v27',0.17],
+                    ['v29',0.16]
                 ]
             }]
         }
     });
-
+/*  
     Highcharts.chart('container3', {
         chart: {
             plotBackgroundColor: null,
@@ -417,4 +329,8 @@ angular.module('saint')
             name: 'London',
             data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
-    });		 
+    });		*/ 
+
+    //}
+
+
