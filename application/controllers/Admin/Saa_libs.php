@@ -132,9 +132,26 @@ public function totalCredito(){
 }
 
 public function serie_ventas(){
-   // $id=$this->input->get('id');
+   $id=$this->input->get('id');
+   
     header('Content-Type: application/json');
-    echo json_encode($this->Saa_lib_model->get_serie_sucursal());
+    echo json_encode($this->Saa_lib_model->get_serie_sucursal($id));
+}
+public function barra_ventas(){
+   //$id=$this->input->get('id');
+   //echo $id;
+    header('Content-Type: application/json');
+    echo json_encode($this->Saa_lib_model->get_barra_sucursal());
+}public function barra_ventas_drilldown(){
+   //$id=$this->input->get('id');
+   //echo $id;
+    header('Content-Type: application/json');
+    echo json_encode($this->Saa_lib_model->get_barra_sucursal_mes());
+}public function barra_ventas_drilldown2(){
+   //$id=$this->input->get('id');
+   //echo $id;
+    header('Content-Type: application/json');
+    echo json_encode($this->Saa_lib_model->get_barra_sucursal_mes2());
 }
 
 public function totalFacturado(){

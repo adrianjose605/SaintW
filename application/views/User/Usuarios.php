@@ -1,5 +1,5 @@
 <div class="marca"></div>
-<div style="position: absolute; width:80%" ng-controller="GUsuarios" layout="column" flex id="content" >
+<div style="position: relative;" ng-controller="GUsuarios" layout="column" flex id="content" ng-cloak>
     <div class="container" style="width:95%">
         <h1 >Usuarios</h1>
 
@@ -47,7 +47,7 @@
                             <td><span class="glyphicon" ng-class="( (row.Estatus==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-material-red btn-xs" href=""  ng-click="getUsuarios(row.Opciones)" data-toggle="modal" data-target="#modificar_noticia"><span class="glyphicon glyphicon-search"></span></a>
+                                    <a class="btn btn-material-orange btn-xs" href=""  ng-click="getUsuarios(row.Opciones)" data-toggle="modal" data-target="#modificar_noticia"><span class="glyphicon glyphicon-search"></span></a>
                                 </div>
                             </td>
 

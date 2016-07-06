@@ -31,7 +31,7 @@
         md-disable-backdrop
         md-whiteframe="4">
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        <h1 class="md-toolbar-tools">Panel de opciones</h1>
       </md-toolbar>
       <md-content layout-padding ng-controller="LeftCtrl">
         <accordion close-others="oneAtATime">
@@ -67,6 +67,31 @@
                       <md-list class="listdemoListControls">
                         <md-list-item ng-click="navigateTo('Admin/Saa_libs/Ventas')">
                             <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Facturacion <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
+                        </md-list-item>
+                           <?php endif ?>
+         
+                    </md-list>
+                     
+                </accordion-group> 
+
+                <accordion-group>
+                    <accordion-heading>
+                        <p><span class="glyphicon glyphicon-menu-down" style="margin-right: 10px;"></span> Mensajeria</p>
+                    </accordion-heading> 
+                      <?php if($LV==1): ?>
+         
+                    <md-list class="listdemoListControls">
+                        <md-list-item ng-click="navigateTo('Admin/Saa_libs/Lib_ventas')">
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span>Mensajes <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
+                        </md-list-item>
+                        
+                    </md-list>
+                       <?php endif ?>
+                           <?php if($Facturacion==1): ?>
+         
+                      <md-list class="listdemoListControls">
+                        <md-list-item ng-click="navigateTo('Admin/Saa_libs/Ventas')">
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Contactos <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
                         </md-list-item>
                            <?php endif ?>
          

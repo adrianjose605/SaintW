@@ -1,23 +1,11 @@
 <!--<div class="col-xs-12 col-md-12 col-lg-12"  style="height: 9%;"></div>-->
 <div class="marca_250"></div>
 <br>
-<div class="col-md-12 col-lg-12 col-xs-12" flex id="content" layout="column" layout-fill layout-align="top center" ng-controller="Dashboard">
-    <div layout="row" class="col-md-12">
-        <div class="col-md-4 col-xs-12" flex >
-            <md-select flex md-on-open="cargarSucursal()" name="provincia" id="provincia"  placeholder="Sucursal" ng-model="lib.CodSucu" required>      
-                <md-option ng-repeat="tcon in sucursal_t" ng-value="tcon.id">{{tcon.Descrip}}</md-option>
-            </md-select>
-        </div>
+<div class="col-md-12 col-lg-12 col-xs-12" flex id="content" layout="column" layout-fill layout-align="top center" ng-controller="Dashboard" ng-cloak>
+    
+    <div class="col-md-12 col-xs-12" style="margin-top: 5%">
 
-        <div class="col-md-4 col-xs-12" flex>
-            <md-button flex id="generar" class="md-raised md-primary" type="submit" data-target="libro" ng-click="Actualizar()">Generar 
-            </md-button>
-        </div>
-        <div class="col-md-4 col-xs-12"></div>
-    </div><br><br>
-    <div class="col-md-12">
-
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-6">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <div class="row">
@@ -30,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="row">
@@ -44,23 +32,8 @@
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br>
     
-    
-    <div layout="row" class="col-md-12 col-xs-12 col-lg-12">
-
-        <div layout="column" class="col-md-12 col-xs-12 col-lg-8 col-lg-offset-1">
-            <div class="panel panel-info">
-                <!--<div class="panel-heading text-center"><strong>VENTAS POR SUCURSAL</strong></div>-->
-                <!--<div class="panel-body">-->
-                    <center><div flex id="container"></div></center>
-                <!--</div>-->
-            </div>
-        </div>
-
-    </div> 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div layout="row" class="col-md-12 col-xs-12 col-lg-12">
+     <div layout="row" class="col-md-12 col-xs-12 col-lg-12" style="margin-top:20%" ng-cloak>
 
         <div layout="column" class="col-md-12 col-xs-12 col-lg-8 col-lg-offset-1">
             <div class="panel panel-info">
@@ -72,6 +45,37 @@
         </div>
 
     </div>
+    <div class="col-md-12 col-xs-12" style="margin-top:50%">
+    <div layout="row" >
+     
+        <div class="col-md-12 col-xs-12" flex > 
+          <h3>Seleccione una Sucursal</h3>           
+            <md-select flex md-on-open="cargarSucursal()" md-on-close="actualizarGrafica()" name="Sucursal" id="Sucursal"  placeholder="Sucursal" ng-model="lib.CodSucu" required>      
+                <md-option  ng-repeat="tcon in sucursal_t" ng-value="tcon.id" >{{tcon.Descrip}}</md-option>
+            </md-select>
+        </div>
+
+        <div class="col-md-4 col-xs-12" flex>
+           <!--  <md-button flex id="generar" class="md-raised md-primary" type="submit" data-target="libro" ng-click="Actualizar()">Generar 
+            </md-button> -->
+        </div>
+        <div class="col-md-4 col-xs-12"></div>
+    </div>
+    <div layout="row" class="col-md-12 col-xs-12 col-lg-12" style="margin-top:10%" ng-cloak>
+
+        <div layout="column" class="col-md-12 col-xs-12 col-lg-8 col-lg-offset-1">
+            <div class="panel panel-info">
+                <!--<div class="panel-heading text-center"><strong>VENTAS POR SUCURSAL</strong></div>-->
+                <!--<div class="panel-body">-->
+                    <center><div flex id="container"></div></center>
+                <!--</div>-->
+            </div>
+        </div>
+
+    </div> 
+    </div>
+
+   
 </div>
 
 
