@@ -37,7 +37,7 @@
                 , "public/img/img3.jpg"
                 , "public/img/img4.jpg"
                 
-                ], {duration: 3000, fade: 1500}
+                ], {duration: 3500, fade: 1500}
             );
             
         </script>

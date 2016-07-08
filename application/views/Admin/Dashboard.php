@@ -1,6 +1,5 @@
 <!--<div class="col-xs-12 col-md-12 col-lg-12"  style="height: 9%;"></div>-->
 <div class="marca_250"></div>
-<br>
 <div class="col-md-12 col-lg-12 col-xs-12" flex id="content" layout="column" layout-fill layout-align="top center" ng-controller="Dashboard" ng-cloak>
     
     <div class="col-md-12 col-xs-12" style="margin-top: 5%">
@@ -17,7 +16,7 @@
                     <strong>TOTAL CREDITO</strong>
                 </div>
             </div>
-        </div>
+        </div> 
         <div class="col-md-3 col-xs-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -33,19 +32,33 @@
         </div>
     </div>
     
-     <div layout="row" class="col-md-12 col-xs-12 col-lg-12" style="margin-top:20%" ng-cloak>
+     <div layout="row" class="col-md-12 col-xs-12 col-lg-12" style="margin-top:20%; position: relative;" ng-cloak>
 
-        <div layout="column" class="col-md-12 col-xs-12 col-lg-8 col-lg-offset-1">
-            <div class="panel panel-info">
+        <div layout="column" class="col-md-12 col-xs-12 col-lg-8 col-lg-offset-1 chart-container highcharts-container" style="position: relative;">
+            <div class="panel panel-info" style="position: relative;">
                 <!--<div class="panel-heading text-center"><strong>VENTAS POR SUCURSAL</strong></div>-->
                 <!--<div class="panel-body ">-->
-                    <center><div flex id="container2"></div></center>
+                    <div id="container3" style="min-width: 310px; height: 400px; max-width: 800px; max-height:400px;position: relative;"></div>
                 <!--</div>-->
             </div>
         </div>
 
     </div>
-    <div class="col-md-12 col-xs-12" style="margin-top:50%">
+
+
+    <div layout="row" class="col-md-12 col-xs-12 col-lg-12" style="margin-top:40%; position: relative;" ng-cloak>
+
+        <div layout="column" class="col-md-12 col-xs-12 col-lg-8 col-lg-offset-1 chart-container highcharts-container" style="position: relative;">
+            <div class="panel panel-info" style="position: relative;">
+                <!--<div class="panel-heading text-center"><strong>VENTAS POR SUCURSAL</strong></div>-->
+                <!--<div class="panel-body ">-->
+                    <center><div flex id="container2" style="position: relative;"></div></center>
+                <!--</div>-->
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-12 col-xs-12" style="margin-top:40%">
     <div layout="row" >
      
         <div class="col-md-12 col-xs-12" flex > 

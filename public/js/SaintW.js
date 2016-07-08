@@ -8,6 +8,7 @@ angular.module('saint', ['ngMaterial', 'ngMessages', 'ngTasty', 'ui.bootstrap','
                 $scope.oneAtATime = true;
                 $scope.toggleSidenav = function(menuId) {
                     $mdSidenav(menuId).toggle();
+                    
                 };
              
                 $scope.navigateTo = function(url) {

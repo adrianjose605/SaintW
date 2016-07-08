@@ -81,7 +81,7 @@
                       <?php if($LV==1): ?>
          
                     <md-list class="listdemoListControls">
-                        <md-list-item ng-click="navigateTo('Admin/Saa_libs/Lib_ventas')">
+                        <md-list-item ng-click="navigateTo('Admin/Sms/nuevo')">
                             <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span>Mensajes <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
                         </md-list-item>
                         
