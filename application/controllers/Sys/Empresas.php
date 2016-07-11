@@ -90,6 +90,8 @@ class Empresas extends CI_Controller {
             $data['Usuarios']=$p->Usuarios;
             $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
+             $data['Sms']=$p->Mensajes;
+            $data['Contac']=$p->Contactos;
             $data['nombre']=$this->session->userdata('nombre');
 
         $this->load->view('templates/header');

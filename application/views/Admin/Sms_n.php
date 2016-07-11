@@ -8,13 +8,18 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-3"><i class="fa fa-comments fa-5x"></i></div>
-                        <div class="col-md-9 text-right"><h4>Sms </h4>
+                        <div class="col-md-9 text-right"><h4>Sms. {{cant_clts}}{{activated}} Contactos</h4>
                         <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox></div>
                     </div>
-                </div>
+                </div><md-switch
+        ng-model="activated"
+        aria-label="Toggle Progress Circular Indicators">
+      <h5>On</h5>
+    </md-switch>
                 <div class="panel-body" style="height:300px;  overflow:auto;">
                     <strong>Contactos</strong>
-                       
+                    <div ng-class="{'visible' : !activated}">
+                       <md-progress-linear    ng-disabled="!activated"></md-progress-linear></div>
                         <md-list-item ng-repeat="person in people" ng-click="goToPerson(person.name, $event)" class="noright">
                             <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
                             <p>{{ person.name }}</p><p>{{ person.n }}</p>

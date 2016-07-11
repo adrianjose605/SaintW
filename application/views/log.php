@@ -1,4 +1,4 @@
-<div layout="column"  class="" >
+<div layout="column"  class="" style=" max-width:350px;" >
     <md-toolbar layout="row"  class="col-xs-12" >
         <div class="md-toolbar-tools">
         <img src="public/img/MiniImagen1.png"  width="20%" style="position: absolute;left: 4px;">
@@ -10,7 +10,7 @@
         <md-content layout-padding >
            <form method="post" action="usuarios/verificacion"  name="formSesion" role="form" novalidate>
                   <div class="col-xs-12">
-                      <div class="col-xs-8 col-xs-offset-2">
+                      <div class="col-xs-12">
                       
                 <md-input-container style="margin-top: 6%; width: 100%" class="" >
                     <label>Usuario</label>
@@ -21,7 +21,7 @@
                      </div>
                 </md-input-container>
                       </div>
-                      <div class="col-xs-8 col-xs-offset-2">
+                      <div class="col-xs-12 ">
                           <md-input-container class="" style=" width: 100%" >
                     <label>Contraseña</label>
                     <input required name="clave"  ng-model="user.clave" type="password" >
@@ -37,7 +37,7 @@
                   <div class="col-xs-12">
                       <div class="col-xs-12">
                         <center>   <p class="text-center"  style="color: #FF0000; font-weight: bold;" ><?php echo $this->session->userdata('mensaje')?></p>
-                    <md-button style="margin-top: 5%; width: 30%;" type="submit" class="md-raised md-primary" >Ingresar</md-button>
+                    <md-button style="margin-top: 5%; width: 35%;" type="submit" class="md-raised md-primary" >Ingresar</md-button>
                         </center>
                       </div>
                   </div>

@@ -131,6 +131,8 @@ public function modificar_usuarios(){
         $data['Usuarios']=$p->Usuarios;
         $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
+             $data['Sms']=$p->Mensajes;
+            $data['Contac']=$p->Contactos;
             $data['nombre']=$this->session->userdata('nombre');
         
         if($p->Permisos==1){  

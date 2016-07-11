@@ -23,6 +23,8 @@ class Saa_libs extends CI_Controller {
             $data['Usuarios']=$p->Usuarios;
             $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
+            $data['Sms']=$p->Mensajes;
+            $data['Contac']=$p->Contactos;
             $data['nombre']=$this->session->userdata('nombre');
             
 
@@ -56,6 +58,8 @@ class Saa_libs extends CI_Controller {
             $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
             $data['nombre']=$this->session->userdata('nombre');
+             $data['Sms']=$p->Mensajes;
+            $data['Contac']=$p->Contactos;
             $data['provincias'] = $this->Pdfs_model->getProvincias();
 
         $this->load->view('templates/header');
@@ -108,6 +112,8 @@ class Saa_libs extends CI_Controller {
             $data['Usuarios']=$p->Usuarios;
             $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
+             $data['Sms']=$p->Mensajes;
+            $data['Contac']=$p->Contactos;
                 $data['nombre']=$this->session->userdata('nombre');
 
             $this->load->view('templates/header');

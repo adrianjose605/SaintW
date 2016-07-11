@@ -68,6 +68,8 @@ public function cerrar(){
                'usuario' => $usuario->Usuario,
                'permiso' => $usuario->id_Grupo,
                'estatus' => $usuario->Estatus,
+               'mensajes' => $usuario->Mensajes,
+               'contactos' => $usuario->Contactos,
                'logueado' => TRUE);
         
         $this->session->set_userdata($usuario_data);

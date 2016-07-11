@@ -4,9 +4,16 @@ class Sms extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Saa_lib_model');
+        $this->load->model('Sms_model');
     }
 
+    public function clientes(){
+
+  
+    header('Content-Type: application/json');
+    echo json_encode($this->Sms_model->clientes());
+
+    }
     public function nuevo(){
 
     if (!$this->session->userdata('logueado')) {
@@ -24,6 +31,8 @@ class Sms extends CI_Controller {
             $data['Usuarios']=$p->Usuarios;
             $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
+             $data['Sms']=$p->Mensajes;
+            $data['Contac']=$p->Contactos;
             $data['nombre']=$this->session->userdata('nombre');
             
 

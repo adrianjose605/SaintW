@@ -11,7 +11,8 @@ angular.module('saint')
   $scope.loading = 'loading';
   $scope.lib={};
 
-
+$scope.Fechai = new Date();
+$scope.FechaF = new Date();
 
 
 

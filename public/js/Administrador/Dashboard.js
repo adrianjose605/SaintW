@@ -7,14 +7,27 @@ angular.module('saint')
 
          $scope.graf_ventas=angular.copy({});
          $scope.graf_barra=angular.copy({});
-        $scope.sucursal_t=null;
+        $scope.sucursal_t=new Object();
+        $scope.sucursal_t2=new Object();
+        //$scope.sucursal_t2.CodSucu='';
         $scope.lib=angular.copy({});
+        $scope.lib2=angular.copy({});
+      
+        $scope.Fecha_1 = new Date();
+        //$scope.FechaF_1 = new Date();
+        $scope.Fechai_2 = new Date();
 
+        $scope.Fechaf_2 = new Date();
+        $scope.Fechaf_2.setDate($scope.Fechaf_2.getDate()-$scope.Fechaf_2.getDate()+30);
         $scope.resetForm = function(){           
             $scope.lib=angular.copy({});
+            //$scope.lib2=angular.copy({});
         }
 var id;
 $(window).load(function() {
+
+      $scope.cargarSucursal();
+     
     var bool=true;
     for(var i in $scope.lib) {
      bool=false;
@@ -45,8 +58,11 @@ $(window).resize(function() {
         return $http.get('Sys/Sucursales/ver_sel').
             success(function(data, status, headers, config) {       
             $scope.sucursal_t=data;
-      
-            //console.log($scope.sucursal_t);
+            $scope.sucursal_t2=data;
+            $scope.lib2.CodSucu=$scope.sucursal_t2[0].id;
+            $scope.lib.CodSucu=$scope.sucursal_t[0].id;
+            $scope.actualizarGrafica();
+            //console.log($scope.sucursal_t2[0]);
             }).
             error(function(data, status, headers, config) {
             console.log(status);
@@ -57,7 +73,7 @@ $(window).resize(function() {
         }
 
         $scope.actualizarGrafica=function(){
-        console.log("Admin/Saa_libs/serie_ventas/"+$scope.lib.CodSucu);  
+        //console.log("Admin/Saa_libs/serie_ventas/"+$scope.lib.CodSucu);  
          $http.post("Admin/Saa_libs/serie_ventas/",$scope.lib.CodSucu).then(function(response) {
             $scope.graf_ventas = response.data;
            
@@ -74,8 +90,8 @@ $(window).resize(function() {
             });
         }
         
-        $scope.cargarSucursal();
-        console.log($scope.sucursal_t);   
+       // $scope.cargarSucursal();
+        //console.log($scope.sucursal_t);   
 
 		$http.get("Admin/Saa_libs/totalCredito/")
 			.success(function(data){
@@ -155,7 +171,7 @@ $scope.container3 = function(){
             zoomType: 'xy'
         },
         title: {
-            text: 'Height Versus Weight of 507 Individuals by Gender'
+            text: 'Densidad de Ventas'
         },
         subtitle: {
             text: 'Source: Heinz  2003'
