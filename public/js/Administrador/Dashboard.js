@@ -38,7 +38,7 @@ $(window).load(function() {
     id = setTimeout($scope.container2, 250);
     if(bool){
       console.log('vacio');  
-    }else{ $scope.actualizarGrafica();}
+    }else{ id = setTimeout($scope.actualizarGrafica(), 250);}
     
 });
 
@@ -74,9 +74,9 @@ $(window).resize(function() {
 
         $scope.actualizarGrafica=function(){
         //console.log("Admin/Saa_libs/serie_ventas/"+$scope.lib.CodSucu);  
-         $http.post("Admin/Saa_libs/serie_ventas/",$scope.lib.CodSucu).then(function(response) {
+         $http.get("Admin/Saa_libs/serie_ventas/"+$scope.lib.CodSucu).then(function(response) {
             $scope.graf_ventas = response.data;
-           
+           //alert(response.data);
             Highcharts.chart('container',
             {
                 xAxis: {categories: $scope.graf_ventas[1]},
@@ -160,12 +160,37 @@ $http.get("Admin/Saa_libs/barra_ventas_drilldown/").then(function(response2) {
         }
     });
  });
+
+
 });
 }
 
 
-$scope.container3 = function(){           
-    $('#container3').highcharts({
+$scope.container3 = function(){     
+   
+    if(typeof($scope.lib2.CodSucu)=="undefined"){
+      console.log($scope.lib2); 
+       clearTimeout(id);
+       id = setTimeout($scope.container3, 2050);
+           
+    }else{
+        if($scope.Fecha_1.getMonth()<9){
+            var aux=$scope.Fecha_1.getMonth()+1;
+            var mes='0'+aux;   
+        }else{
+            var mes=$scope.Fecha_1.getMonth()+1;    
+        }
+        
+        var f=$scope.Fecha_1.getFullYear()+'-'+mes+'-'+$scope.Fecha_1.getDate();
+
+        var data=[{'CodSucu':$scope.lib2.CodSucu,'fechai':f}];
+        console.log(data);
+        var url="Admin/Saa_libs/dispersion_ventas/"+$scope.lib2.CodSucu+"/"+f;
+         $http.get(url).then(function(response) {        
+            $scope.graf_dispersion=response.data;
+            console.log($scope.graf_dispersion);
+
+     $('#container3').highcharts({
         chart: {
             type: 'scatter',
             zoomType: 'xy'
@@ -280,7 +305,7 @@ $scope.container3 = function(){
                 [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
                 [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]]
 
-        }, {
+        }/*, {
             name: 'Male',
             color: 'rgba(119, 152, 191, .5)',
             data: [[174.0, 65.6], [175.3, 71.8], [193.5, 80.7], [186.5, 72.6], [187.2, 78.8],
@@ -333,9 +358,14 @@ $scope.container3 = function(){
                 [180.3, 73.2], [167.6, 76.3], [183.0, 65.9], [183.0, 90.9], [179.1, 89.1],
                 [170.2, 62.3], [177.8, 82.7], [179.1, 79.1], [190.5, 98.2], [177.8, 84.1],
                 [180.3, 83.2], [180.3, 83.2]]
-        }]
+        }*/]
     });
 
+    });
+       
+    }
+    
+   
         }
 
     }

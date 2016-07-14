@@ -32,7 +32,18 @@
 		    return $query->result_array();
 	    } 
 	     //Total Credito por sucursal
+	    public function get_dispersion_ventas($sucu,$fecha){
+	    	return $fecha;
+	    	/*$this->db->select('TipoFac, SUM(Credito) as totalCredito');
+	    	$this->db->where("TipoFac = 'B'");
+
+	    	$this->db->group_by('TipoFac');
+	    	$query = $this->db->get('saa_lib');
+		    return $query->result_array();*/
+	    } 
+	     //Total Credito por sucursal
 	    public function get_serie_sucursal($id=false){
+
 	    	$aux=array();$qry="";
 	    	for($i=1; $i<=12; $i++){
 	    	$this->db->select('SUM(dbo.SAA_LIB.Monto) as Monto ');
