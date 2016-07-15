@@ -42,7 +42,7 @@
                     </accordion-heading> 
                     <md-list class="listdemoListControls">
                         <md-list-item ng-click="navigateTo('Admin/Saa_libs/Dashboard')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> DashBoard <i class="fa fa-tachometer" aria-hidden="true"></i></p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i>  DashBoard</p>
                         </md-list-item>
                         
                     </md-list>
@@ -57,7 +57,7 @@
          
                     <md-list class="listdemoListControls">
                         <md-list-item ng-click="navigateTo('Admin/Saa_libs/Lib_ventas')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Libro de ventas <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i> Libro de ventas </p>
                         </md-list-item>
                         
                     </md-list>
@@ -66,7 +66,7 @@
          
                       <md-list class="listdemoListControls">
                         <md-list-item ng-click="navigateTo('Admin/Saa_libs/Ventas')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Facturacion <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-list-alt fa-2x" aria-hidden="true"></i> Facturacion </p>
                         </md-list-item>
                            <?php endif ?>
          
@@ -82,7 +82,7 @@
          
                     <md-list class="listdemoListControls">
                         <md-list-item ng-click="navigateTo('Admin/Sms/nuevo')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span>Mensajes <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i> Mensajes </p>
                         </md-list-item>
                         
                     </md-list>
@@ -91,7 +91,7 @@
          
                       <md-list class="listdemoListControls">
                         <md-list-item ng-click="navigateTo('Admin/Saa_libs/Ventas')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Contactos <i class="fa fa-file-pdf-o" aria-hidden="true"></i></p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-user fa-2x" aria-hidden="true"></i> Contactos </p>
                         </md-list-item>
                            <?php endif ?>
          
@@ -107,12 +107,12 @@
                     <md-list class="listdemoListControls">
                     <?php if($Usuarios==1): ?>
                         <md-list-item ng-click="navigateTo('User/LUsuarios')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Usuarios de acceso</p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i> Usuarios de acceso</p>
                         </md-list-item>
                     <?php endif ?>
                     <?php if($Permisos==1): ?>
                         <md-list-item ng-click="navigateTo('User/GUsuarios')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Grupos de usuarios</p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-users fa-2x" aria-hidden="true"></i> Grupos de usuarios</p>
                         </md-list-item>
                     <?php endif ?>
                     </md-list>
@@ -127,12 +127,12 @@
                     <md-list class="listdemoListControls">
                     <?php if($Empresas==1): ?>
                         <md-list-item ng-click="navigateTo('Sys/Empresas')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Registro de Empresas</p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-key fa-2x" aria-hidden="true"></i> Registro de Empresas</p>
                         </md-list-item>
                     <?php endif ?>
                     <?php if($Sucursales==1): ?> 
                         <md-list-item ng-click="navigateTo('Sys/Sucursales')">
-                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span> Sucursales</p>
+                            <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-university fa-2x" aria-hidden="true"></i> Sucursales</p>
                         </md-list-item>
                     <?php endif ?>
                     </md-list>
