@@ -33,13 +33,35 @@
 	    } 
 	     //Total Credito por sucursal
 	    public function get_dispersion_ventas($sucu,$fecha){
-	    	return $fecha;
-	    	/*$this->db->select('TipoFac, SUM(Credito) as totalCredito');
-	    	$this->db->where("TipoFac = 'B'");
+	    	//return $fecha;
 
-	    	$this->db->group_by('TipoFac');
-	    	$query = $this->db->get('saa_lib');
-		    return $query->result_array();*/
+	    	$this->db->select('dbo.SAA_LIB.Monto, dbo.SAA_LIB.Fecha, dbo.SAA_LIB.Hora');
+	    	//$this->db->where("TipoFac = 'B'");
+	    	$this->db->where('dbo.SAA_LIB.Fecha',$fecha);
+	    	$this->db->where('dbo.SAA_LIB.CodSucu',$sucu);
+	    	$this->db->where("dbo.SAA_LIB.CodEmp", $this->session->userdata('empresa'));
+	    	$query = $this->db->get('dbo.SAA_LIB');
+	    	$aux=array();
+	    	 foreach ($query->result() as $fila){
+	    	 	$date = new DateTime($fila->Hora);
+				$h= $date->format('G:ia');
+				if($fila->Hora<100000)
+					$hora=substr($fila->Hora,-6,2);
+				else
+					$hora=substr($fila->Hora,-5,1);
+				$min=substr($fila->Hora,-4,2);
+				$h1=$hora.'.'.$min;
+	    	 	$aux[]=array($h1*1 ,$fila->Monto*1);
+	    	 }
+
+	    	 $this->db->select('dbo.SASUCU.Descrip');
+	    	 $this->db->where('dbo.SASUCU.CodSucu',$sucu);
+	    	 $query = $this->db->get('dbo.SASUCU');
+	    	  foreach ($query->result() as $fila){
+	    	  	$r[0]="Sucursal ".$fila->Descrip;}
+	    	$r[1]=$aux;
+	    	return $r;
+		    //return $query->result_array();
 	    } 
 	     //Total Credito por sucursal
 	    public function get_serie_sucursal($id=false){
@@ -113,9 +135,6 @@
 			return $r;
 		
 	    }
-
-
-
 
 
 

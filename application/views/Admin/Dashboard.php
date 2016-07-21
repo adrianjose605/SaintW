@@ -37,13 +37,13 @@
 <div class="col-md-12 col-xs-12 col-lg-12">
     <div class="col-md-4 col-xs-12 col-lg-4" flex > 
           <h4>Seleccione una Sucursal</h4>           
-            <md-select flex md-on-open="cargarSucursal()" md-on-close="" placeholder="Sucursal" ng-model="lib2.CodSucu" required>      
+            <md-select flex md-on-open="cargarSucursal()" md-on-close="container3()" placeholder="Sucursal" ng-model="lib2.CodSucu" required>      
                 <md-option  ng-repeat="tcon in sucursal_t2" ng-value="tcon.id" >{{tcon.Descrip}}</md-option>
             </md-select>
     </div>
         <div class="col-xs-6 col-md-4  col-lg-4">
             <h4>Dia a consultar</h4>
-            <md-datepicker style="background-color: transparent" ng-model="Fecha_1" md-placeholder="Enter date"></md-datepicker>
+            <md-datepicker style="background-color: transparent" ng-change="container3()" ng-model="Fecha_1" md-placeholder="Enter date"></md-datepicker>
         </div>
 </div>
    <div class="col-md-12 col-xs-12 col-lg-12">

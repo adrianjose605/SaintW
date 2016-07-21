@@ -8,6 +8,11 @@
         	$this->load->database();
 		}
 
+
+		public function set_sms(){
+			
+		}
+
 		public function get_all($aux) {
 		   	//echo "Prueba ".$aux;
 		    $this->db->where('CodSucu ='.$aux);

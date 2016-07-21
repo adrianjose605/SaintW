@@ -47,4 +47,18 @@ class Sms extends CI_Controller {
     }
     }
 
+    public function send_sms(){
+
+   include_once ("lib/centaurosms.php");
+$SMS = new CentauroSMS('991509570419159','lFmkOIfuSZNOeSXaFOiq');
+
+$destinatarios = array("id" => "0","cel" => "04249342034","nom" => "Adrian");  
+$msg = 'Mensaje de prueba';
+$js='{"id":"0","cel":"04249342034","nom":"Pedro Perez"},{"id":"0","cel":"04249342034","nom":"Jose Perez"}';
+//$js = json_encode($destinatarios);
+$result = $SMS->set_sms_send($js,$msg); 
+echo (json_encode($result));
+
+    }
+
 }
