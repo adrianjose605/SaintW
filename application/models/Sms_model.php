@@ -51,7 +51,7 @@
 		    foreach ($query->result() as $fila)
 			{
 				if($fila->Telef!=null && substr($fila->Telef,0,2)=='04' && (strlen($fila->Telef)==11 || strlen($fila->Telef)==12)){
-			 	$aux[$i]=array('name' =>$fila->Descrip,'n'=> $fila->Telef,'img'=>'public/img/persona.png');
+			 	$aux[$i]=array('name' =>$fila->Descrip,'n'=> $fila->Telef,'img'=>'public/img/persona.png','selected'=>false);
 				$i++;
 				}
 			}

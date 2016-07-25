@@ -17,7 +17,7 @@
         aria-label="Toggle Progress Circular Indicators">
       <h5>On</h5>
     </md-switch> -->
-                <div class="panel-body" style="height:300px;  overflow:auto;">
+         <div class="panel-body" style="height:300px;  overflow:auto;">
                     <strong>Contactos</strong>
                     <div ng-class="{'visible' : !activated}">
                        <!-- <md-progress-linear    ng-disabled="!activated"></md-progress-linear> --></div>
@@ -25,7 +25,7 @@
                             <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
                             <p>{{ person.name }}</p><p>{{ person.n }}</p>
                             <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox>
-                            <md-icon md-svg-icon="communication:email"  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+                            <md-icon md-svg-icon=""  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
                             <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon>
                         </md-list-item>
                     </md-list>
@@ -43,8 +43,8 @@
                 </div>
                 <div class="panel-body">
                     <strong>Enviados</strong>
-                    <textarea style="width: 100%; height: 30%"></textarea>
-                    <md-button  style="width: 90%;" id="nuevo" class="md-raised md-primary" data-toggle="modal"  data-target="#nuevo_grupo">Enviar</md-button>
+                    <textarea ng-model="mensaje" style="width: 100%; height: 30%"></textarea>
+                    <md-button  style="width: 90%;" id="nuevo" class="md-raised md-primary" data-toggle="modal"  ng-click="enviar()">Enviar</md-button>
                 
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div class="panel-body">
                     <strong>MENSAJE</strong>
                     <textarea style="width: 100%; height: 30%"></textarea>
-                    <md-button  style="width: 90%;" id="nuevo" class="md-raised md-primary" data-toggle="modal"  data-target="#nuevo_grupo">Cargar</md-button>
+                    <md-button  style="width: 90%;" id="snuevo" class="md-raised md-primary" >Cargar</md-button>
                 
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 <div class="panel-body">
                     <strong>MENSAJE NUEVO</strong>
                     <textarea style="width: 100%; height: 30%"></textarea>
-                    <md-button  style="width: 90%;" id="nuevo" class="md-raised md-primary" data-toggle="modal"  data-target="#nuevo_grupo">Enviar</md-button>
+                    <md-button  style="width: 90%;" id="njuevo" class="md-raised md-primary" >Enviar</md-button>
                 
                 </div>
             </div>

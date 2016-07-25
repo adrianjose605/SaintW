@@ -5,6 +5,7 @@ class Sms extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Sms_model');
+      
     }
 
     public function clientes(){
@@ -47,16 +48,31 @@ class Sms extends CI_Controller {
     }
     }
 
-    public function send_sms(){
-
+    public function send_sms($var=false){
    include_once ("lib/centaurosms.php");
 $SMS = new CentauroSMS('991509570419159','lFmkOIfuSZNOeSXaFOiq');
+  $js1=null;
+   // var_dump(json_decode(file_get_contents('php://input')));
+    $post=json_decode(file_get_contents('php://input'));
+    
+  for($i=0;$i<count($post[0]);$i++){
+    $num=str_replace(array(" ", "-","+"),"",$post[0][$i]->cel);
+    $js1[]=array("id" => $post[0][$i]->id,"cel" =>$num,"nom" => $post[0][$i]->nom);
+   // $js1[]=array("id" => $post[0][1]->id,"cel" =>$post[0][1]->cel,"nom" => $post[0][1]->nom);
+    
+  }
+    
+
 
 $destinatarios = array("id" => "0","cel" => "04249342034","nom" => "Adrian");  
-$msg = 'Mensaje de prueba';
+$msg = $post[1];
 $js='{"id":"0","cel":"04249342034","nom":"Pedro Perez"},{"id":"0","cel":"04249342034","nom":"Jose Perez"}';
-//$js = json_encode($destinatarios);
-$result = $SMS->set_sms_send($js,$msg); 
+$js = json_encode($destinatarios);
+//print_r($js);
+$js1 = json_encode($js1);
+$js1 =str_replace(array("[", "]",),"",$js1);
+echo($js1);
+$result = $SMS->set_sms_send($js1,$msg); 
 echo (json_encode($result));
 
     }
