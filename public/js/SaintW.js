@@ -32,6 +32,6 @@ function hacerToast(type, msg, toast) {
         controller: 'ToastCtrl',
         template: '<md-toast class="md-toast ' + type + '"> <span flex>' + msg + '</span> <md-button ng-click="closeToast();">OK</md-button></md-toast>',
         hideDelay: 6000,
-        position: 'top rigt'
+        position: 'top rigth'
     });
 };

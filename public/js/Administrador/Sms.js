@@ -1,29 +1,52 @@
 angular.module('saint')
 
-.controller('Sms', ['$scope','$http','$mdDialog','$interval', us])
-function us($scope,$http,$mdToast, $mdDialog,$interval){
-		//$scope.people={selected:false};
- /*$scope.people = [
-    { name: 'Janet Perkins',n:'4249342034', img: 'public/img/persona.png' },
-    { name: 'Mary Johnson', n:'4148764436',img: 'public/img/persona.png' },
-    { name: 'Peter Carlsson',n:'4261944366', img: 'public/img/persona.png' },
-    { name: 'Peter Carlsson', n: '4165889536',img: 'public/img/persona.png' },
-    { name: 'Peter Carlsson', n: '4249108775',img: 'public/img/persona.png' },
-    { name: 'Peter Carlsson', n: '4249715487',img: 'public/img/persona.png'}
-  ];*/
+.controller('Sms', ['$scope','$http','$mdDialog','$interval','$mdToast', us])
+function us($scope,$http, $interval,$mdDialog,$mdToast){
+
+  $('#progress1').show();
+	$('#progress3').show();
+  $('#progress2').hide();
+$scope.clts= function (){
   $scope.activated=true;
+ 
+     $('#progress1').show();
+     $('#progress2').hide();
   $http.get("Admin/Sms/clientes/")
       .success(function(data){
         $scope.people = data;
 
         $scope.cant_clts = data.length;
-        console.log($scope.people);
-        console.log($scope.people[2]['selected']);
-          for (var i = 0; i <= $scope.people.length; i++) {
+        
+        //console.log($scope.people[2]['selected']);
+         /* for (var i = 0; i <= $scope.people.length; i++) {
           //    $scope.people[i].selected=false;      
-          }
-         //$scope.activated=false;
+          }*/
+         $scope.activated=false;
+       
+            $('#progress1').hide();
+     
       });
+    };
+      $scope.sms_recent= function (){
+      $http.get("Admin/Sms/recent/")
+      .success(function(data){
+        $scope.sms = data;
+          $('#progress3').hide();
+            
+      });
+    };
+$(window).load(function() {
+ $scope.clts();
+ $scope.sms_recent();
+});
+   $scope.select_all= function (){
+    
+    for (var i = 0; i < $scope.people.length; i++) {
+       $scope.people[i]['selected']=$scope.people[i]['selected']==false;
+    }
+   
+   };   
+
   $scope.goToPerson = function(person, event) {
     $mdDialog.show(
       $mdDialog.alert()
@@ -65,8 +88,14 @@ function us($scope,$http,$mdToast, $mdDialog,$interval){
     );
   };
   $scope.enviar = function() {
-$scope.sms_cts=[{}];
+    $('#progress2').show();
+    $('#sms_n').hide();
+$scope.sms_cts=[];
 $scope.post=[{}];var j=0;
+
+
+
+
     for (var i = 0; i < $scope.people.length; i++) {
             if($scope.people[i]['selected']==true){
               $scope.sms_cts[j]={'id':'0', 'cel':$scope.people[i]['n'],'nom':$scope.people[i]['name']}; 
@@ -74,15 +103,39 @@ $scope.post=[{}];var j=0;
             } 
 
            }
+
+   if($scope.sms_cts.length>0){
+        
+   
+    if($scope.sms_cts.length>=300){
+     hacerToast('error','Son mas de 300 mensajes, esto puede tardar un poco. ',$mdToast);
+    }
+
     $scope.post[0]=$scope.sms_cts;
     $scope.post[1]=$scope.mensaje;
-    
+     
+
+
     $http.post("Admin/Sms/send_sms/",JSON.stringify($scope.post))
       .success(function(data){
-        console.log(data);
+       $('#progress2').hide();
+       $('#sms_n').show();
+        hacerToast('success','Mensaje Enviado con exito',$mdToast);
+         $scope.sms_recent();
+
+      }).error(function(data,status){
+        $('#progress2').hide();
+        $('#sms_n').show();
+        hacerToast('error','Error '+status,$mdToast);
+         $scope.sms_recent();
       });
-              //console.log($scope.mensaje); 
-              //console.log($scope.sms_cts); 
+             
+       }else{
+        hacerToast('error','Sin destinatario',$mdToast);
+        $('#progress2').hide();
+        $('#sms_n').show();
+
+       }        
  
   }
 }

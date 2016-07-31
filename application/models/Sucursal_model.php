@@ -53,15 +53,15 @@ public function get_sucursal_sel($activos) {
             $this->db->where('Estatus', $activos);
  
 
-        $query = $this->db->get('dbo.SASUCU');
+        $query = $this->db->get('SASUCU');
         return $query->result_array();
     }
 
 
     public function get_Sucursal($id) {
         $this->db->select('Descrip,Estatus,CodSucu, Direccion, Telefono');
-        $this->db->where('dbo.SASUCU.CodSucu', $id);
-        $query = $this->db->get(' dbo.SASUCU');
+        $this->db->where('SASUCU.CodSucu', $id);
+        $query = $this->db->get(' SASUCU');
         return $query->result_array();
     }
 
@@ -93,17 +93,17 @@ public function get_sucursal_sel($activos) {
         $this->db->select('COUNT(1) AS cantidad');
 
 
-        $query1 = $this->db->get('dbo.SASUCU');
+        $query1 = $this->db->get('SASUCU');
         $respuesta['cantidad'] = $query1->result_array();
 
-        $this->db->select(' dbo.SASUCU.Descrip AS Nombre,Direccion,Telefono ,dbo.SASUCU.Estatus, dbo.SASUCU.CodSucu as Opciones');
+        $this->db->select(' SASUCU.Descrip AS Nombre,Direccion,Telefono ,SASUCU.Estatus, SASUCU.CodSucu as Opciones');
 
-        //$this->db->where('sch_sistema.SIS_USUARIO.id_Grupo = sch_sistema.SIS_PERMISOS.id');
-        //$this->db->where('sch_sistema.SIS_USUARIO.id_Empresa = dbo.SASUCU.id');
+        //$this->db->where('SIS_USUARIO.id_Grupo = SIS_PERMISOS.id');
+        //$this->db->where('SIS_USUARIO.id_Empresa = SASUCU.id');
 
 
         if ($arr['estatus'])
-            $this->db->where('dbo.SASUCU.Estatus', $arr['estatus']);
+            $this->db->where('SASUCU.Estatus', $arr['estatus']);
 
          if ($this->session->userdata('empresa')!='1') 
              $this->db->where('CodEmp', $this->session->userdata('empresa'));
@@ -116,7 +116,7 @@ public function get_sucursal_sel($activos) {
 
 
 
-        $query = $this->db->get('dbo.SASUCU');
+        $query = $this->db->get('SASUCU');
         $respuesta['resultado'] = $query->result_array();
         $respuesta['meta'] = $query->list_fields();
         return $respuesta;
@@ -128,7 +128,7 @@ public function get_sucursal_sel($activos) {
         if ($activos)
             $this->db->where('Estatus', $activos);
 
-        $query = $this->db->get('dbo.SASUCU');
+        $query = $this->db->get('SASUCU');
         return $query->result_array();
     }*/
 
@@ -151,7 +151,7 @@ public function get_sucursal_sel($activos) {
         $this->db->where('CodSucu', $data['CodSucu']);
         
 
-        if ($this->db->update('dbo.SASUCU', $empr)) {
+        if ($this->db->update('SASUCU', $empr)) {
             $res['estatus'] = 1;
             $res['mensaje'] = 'Actualizado con Exito';
         } else {
@@ -172,7 +172,7 @@ public function get_sucursal_sel($activos) {
         $res = array();
         $this->db->select('Rif');
         $this->db->where('Rif', $arr['Rif']);
-        $query1 = $this->db->get('sch_sistema.SIS_EMP');
+        $query1 = $this->db->get('SIS_EMP');
         if ($query1->num_rows() > 0) {
             $res['status'] = 0;
             $res['mensaje'] = 'El usuario ya esta registrado';
@@ -181,7 +181,7 @@ public function get_sucursal_sel($activos) {
 */
         //$this->db->set('fecha_registro', 'GETDATE()', FALSE);
     $this->db->select('CodSucu');
-    $query1 = $this->db->get('dbo.SASUCU');
+    $query1 = $this->db->get('SASUCU');
     $aux=0; $mayor=0;
     foreach ($query1->result() as $row){
         $aux= $row->CodSucu;
@@ -191,7 +191,7 @@ public function get_sucursal_sel($activos) {
 
     }
     $arr['CodSucu']=$mayor+1;
-    if ($this->db->insert('dbo.SASUCU', $arr)) {
+    if ($this->db->insert('SASUCU', $arr)) {
         $res['estatus'] = 1;
         $res['mensaje'] = 'Registrado con Exito';
     } else {

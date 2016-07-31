@@ -64,11 +64,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' =>'sainweb.ddns.net',
-	'username' =>'sa',
-	'password' =>'3Dv.*Sa.*3d_',
+	'hostname' =>'localhost',//'sainweb.ddns.net',
+	'username' =>'root',//'sa',
+	'password' =>'',//'3Dv.*Sa.*3d_',
 	'database' =>'EnterpriseTest',
-	'dbdriver' =>'sqlsrv',
+	'dbdriver' =>'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => TRUE,

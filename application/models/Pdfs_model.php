@@ -9,7 +9,7 @@ parent::__construct();
 //obtenemos las provincias para cargar en el select
 function getProvincias()
 {
-$query = $this->db->get("sch_sistema.provincias_es");
+$query = $this->db->get("provincias_es");
 if($query->num_rows()>0)
 {
 foreach ($query->result() as $fila)
@@ -25,7 +25,7 @@ return $data;
     function getProvinciasSeleccionadas($provincia)
 {
      $this->db->select("l.provincia,l.localidad,l.id,p.provincia");
-     $this->db->from("sch_sistema.localidades_es l, sch_sistema.provincias_es p");
+     $this->db->from("localidades_es l, provincias_es p");
      $this->db->where("l.provincia = p.id and p.id = ".$provincia);
       $query=$this->db->get();
 

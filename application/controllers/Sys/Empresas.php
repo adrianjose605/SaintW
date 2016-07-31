@@ -27,7 +27,7 @@ class Empresas extends CI_Controller {
         echo json_encode($this->Empresas_model->edit_Empresas());         
     }
         
-    public function tabla_principal_Empresas($count = 5, $page = 1, $order = 'sch_sistema.SIS_EMP.Nombre', $type = 'asc'){
+    public function tabla_principal_Empresas($count = 5, $page = 1, $order = 'SIS_EMP.Nombre', $type = 'asc'){
          if ($type != 'asc') {
             $type = 'desc';
         }

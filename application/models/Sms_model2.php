@@ -2,10 +2,27 @@
 
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Saa_lib_model extends CI_Model{
+	class Sms_model2 extends CI_Model{
 		
 		public function __construct(){
         	$this->load->database();
+		}
+
+
+		public function envio($estatus,$msg){
+			if($estatus['status']="200"){
+				$estatus=1;
+			}else{
+				$estatus=0;
+			}
+			$mensaje = ['mensaje' => $msg,
+        'id_Emp' => $this->session->userdata('empresa'),
+        'id_usuario' => $this->session->userdata('id'),
+        'estatus' => $estatus
+        ];
+
+		 $r=$this->db->insert('mensaje',$mensaje);
+		 return $r;
 		}
 
 		public function get_all($aux) {
@@ -32,109 +49,62 @@
 		    return $query->result_array();
 	    } 
 	     //Total Credito por sucursal
-	    public function get_dispersion_ventas($sucu,$fecha){
-	    	//return $fecha;
-
-	    	$this->db->select('SAA_LIB.Monto, SAA_LIB.Fecha, SAA_LIB.Hora');
-	    	//$this->db->where("TipoFac = 'B'");
-	    	$this->db->where('SAA_LIB.Fecha',$fecha);
-	    	$this->db->where('SAA_LIB.CodSucu',$sucu);
-	    	$this->db->where("SAA_LIB.CodEmp", $this->session->userdata('empresa'));
-	    	$query = $this->db->get('SAA_LIB');
-	    	$aux=array();
-	    	 foreach ($query->result() as $fila){
-	    	 	$date = new DateTime($fila->Hora);
-				$h= $date->format('G:ia');
-				if($fila->Hora<100000)
-					$hora=substr($fila->Hora,-6,2);
-				else
-					$hora=substr($fila->Hora,-5,1);
-				$min=substr($fila->Hora,-4,2);
-				$h1=$hora.'.'.$min;
-	    	 	$aux[]=array($h1*1 ,$fila->Monto*1);
-	    	 }
-
-	    	 $this->db->select('SASUCU.Descrip');
-	    	 $this->db->where('SASUCU.CodSucu',$sucu);
-	    	 $query = $this->db->get('SASUCU');
-	    	  foreach ($query->result() as $fila){
-	    	  	$r[0]="Sucursal ".$fila->Descrip;}
-	    	$r[1]=$aux;
-	    	return $r;
-		    //return $query->result_array();
-	    } 
-	     //Total Credito por sucursal
-	    public function get_serie_sucursal($id=false){
-
+	    public function clientes(){
 	    	$aux=array();$qry="";
-	    	for($i=1; $i<=12; $i++){
-	    	$this->db->select('SUM(SAA_LIB.Monto) as Monto ');
-	    		if($i<10){
-	    			$qry=('SAA_LIB.Fecha BETWEEN 20160'.$i.'01 AND 20160'.$i.'31');
-	    		}else{
-	    			$qry=(' SAA_LIB.Fecha BETWEEN 2016'.$i.'01 AND 2016'.$i.'31');
-	    		}
-	    		if($id){
-	    		$this->db->where('CodSucu',$id);		
-	    		}
-	    	$this->db->where($qry);
-
-	    	$this->db->where("TipoFac = 'A'");
-	    	//$this->db->where("Fecha BETWEEN 20160201 AND 20160231");
-	    	$this->db->where("CodEmp", $this->session->userdata('empresa'));
-	    	//$this->db->limit('12');
-	    	$query = $this->db->get('SAA_LIB');
+	    	
+	    	$this->db->select("Descrip,  Telef");
+	    	$this->db->from('SACLIE');	    	
+	    	$this->db->where("SACLIE.CodEmp", $this->session->userdata('empresa'));
+	    	//$this->db->limit("100");
+	    	
+	    	$query = $this->db->get();
 		     $result=$query->result_array();
-		     		     
+		     	$i=0;	     
 		    foreach ($query->result() as $fila)
-			{$aux[$i-1]=array('name' =>'Ventas ' ,'y'=> $fila->Monto*1);
-			switch ($i) {
-				case 1:
-					$aux1[$i-1]='Ene';
-					break;				
-				case 2:
-					$aux1[$i-1]='Feb';
-					break;
-				case 3:
-					$aux1[$i-1]='Marz';
-					break;
-				case 4:
-					$aux1[$i-1]='Abr';
-					break;
-				case 5:
-					$aux1[$i-1]='May';
-					break;
-				case 6:
-					$aux1[$i-1]='Jun';
-					break;
-				case 7:
-					$aux1[$i-1]='Jul';
-					break;
-				case 8:
-					$aux1[$i-1]='Ago';
-					break;
-				case 9:
-					$aux1[$i-1]='Sep';
-					break;
-				case 10:
-					$aux1[$i-1]='Oct';
-					break;
-				case 11:
-					$aux1[$i-1]='Nov';
-					break;
-				case 12:
-					$aux1[$i-1]='Dic';
-					break;
+			{
+				if($fila->Telef!=null && substr($fila->Telef,0,2)=='04' && (strlen($fila->Telef)==11 || strlen($fila->Telef)==12)){
+			 	$aux[$i]=array('name' =>$fila->Descrip,'n'=> $fila->Telef,'img'=>'public/img/persona.png','selected'=>false);
+				$i++;
+				}
 			}
-			 
-			}
+			
+			
 
-		}
-		$r[0]=$aux;
-		$r[1]=$aux1;
-			return $r;
+		
+		
+			return $aux;
 		
 	    }
+
+
+  public function recent(){
+	    	$aux=array();$qry="";
+	    	
+	    	$this->db->select("mensaje,  estatus, fecha_envio");
+	    	$this->db->from('mensaje');	    	
+	    	$this->db->where("mensaje.id_Emp", $this->session->userdata('empresa'));
+	    	
+	    	
+	    	$query = $this->db->get();
+		     $result=$query->result_array();
+		     	$i=0;	     
+		    foreach ($query->result() as $fila)
+			{
+			
+			 	$aux[$i]=array('prev' =>$fila->mensaje,'estatus'=> $fila->estatus,'img'=>'public/img/persona.png','selected'=>false, 'fecha'=> $fila->fecha_envio);
+				$i++;
+				
+			}
+			
+			
+
+		
+		
+			return $aux;
+		
+	    }
+
+
 
 
 

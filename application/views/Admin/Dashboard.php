@@ -1,4 +1,9 @@
 <!--<div class="col-xs-12 col-md-12 col-lg-12"  style="height: 9%;"></div>-->
+<script src="public/highcharts/js/highcharts.js"></script>
+        <script src="public/highcharts/data.js"></script>
+        <script src="public/highcharts/drilldown.js"></script>
+        <script src="public/highcharts/highcharts-3d.js"></script>
+        <script src="public/highcharts/exporting.js"></script>   
 <div class="marca_250"></div>
 <div class="col-md-12 col-lg-12 col-xs-12" flex id="content" ng-controller="Dashboard" ng-cloak>
     
