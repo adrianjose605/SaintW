@@ -48,7 +48,7 @@
                     </md-list>
 
                 </accordion-group>
-                    
+                     <?php if($LV==1 || $Facturacion==1): ?>
                 <accordion-group>
                     <accordion-heading>
                         <p><span class="glyphicon glyphicon-menu-down" style="margin-right: 10px;"></span> Ventas</p>
@@ -73,6 +73,7 @@
                     </md-list>
                      
                 </accordion-group> 
+                <?php endif ?>
                 <?php if($Sms==1 || $Contac==1): ?>
                 <accordion-group>
                     <accordion-heading>
@@ -90,7 +91,7 @@
                            <?php if($Contac==1): ?>
          
                       <md-list class="listdemoListControls">
-                        <md-list-item ng-click="navigateTo('Admin/Saa_libs/Ventas')">
+                        <md-list-item ng-click="navigateTo('Admin/Clientes')">
                             <p><span class="glyphicon glyphicon-menu-right" style="margin-right: 10px;"></span><i class="fa fa-user fa-2x" aria-hidden="true"></i> Contactos </p>
                         </md-list-item>
                            <?php endif ?>

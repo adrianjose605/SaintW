@@ -50,8 +50,8 @@ class Empresas_model extends CI_Model {
 
     public function get_Empresas($id) {
         $this->db->select('Rif, Nombre,Descripcion, fecha_registro,Estatus,id, Direccion, Telefono');
-        $this->db->where('SIS_EMP.id', $id);
-        $query = $this->db->get(' SIS_EMP');
+        $this->db->where('sis_emp.id', $id);
+        $query = $this->db->get(' sis_emp');
         return $query->result_array();
     }
 
@@ -83,17 +83,17 @@ class Empresas_model extends CI_Model {
         $this->db->select('COUNT(1) AS cantidad');
 
 
-        $query1 = $this->db->get('SIS_EMP');
+        $query1 = $this->db->get('sis_emp');
         $respuesta['cantidad'] = $query1->result_array();
 
-        $this->db->select('Rif, SIS_EMP.Nombre,Descripcion ,Telefono ,SIS_EMP.Fecha_registro , SIS_EMP.Estatus, SIS_EMP.id as Opciones');
+        $this->db->select('Rif, sis_emp.Nombre,Descripcion ,Telefono ,sis_emp.Fecha_registro , sis_emp.Estatus, sis_emp.id as Opciones');
 
-        //$this->db->where('SIS_USUARIO.id_Grupo = SIS_PERMISOS.id');
-        //$this->db->where('SIS_USUARIO.id_Empresa = SIS_EMP.id');
+        //$this->db->where('sis_usuario.id_Grupo = SIS_PERMISOS.id');
+        //$this->db->where('sis_usuario.id_Empresa = sis_emp.id');
 
 
         if ($arr['estatus'])
-            $this->db->where('SIS_EMP.Estatus', $arr['estatus']);
+            $this->db->where('sis_emp.Estatus', $arr['estatus']);
 
         
         
@@ -105,7 +105,7 @@ class Empresas_model extends CI_Model {
 
 
 
-        $query = $this->db->get('SIS_EMP');
+        $query = $this->db->get('sis_emp');
         $respuesta['resultado'] = $query->result_array();
         $respuesta['meta'] = $query->list_fields();
         return $respuesta;
@@ -116,11 +116,11 @@ public function get_empresas_sel($activos) {
         if ($activos)
             $this->db->where('Estatus', $activos);
 
-        if ($this->session->userdata('empresa')!='1') 
+        if ($this->session->userdata('empresa')!='0') 
              $this->db->where('id', $this->session->userdata('empresa'));
         
 
-        $query = $this->db->get('SIS_EMP');
+        $query = $this->db->get('sis_emp');
         return $query->result_array();
     }
 
@@ -145,7 +145,7 @@ public function get_empresas_sel($activos) {
         $this->db->where('Rif', $data['Rif']);
         
 
-        if ($this->db->update('SIS_EMP', $empr)) {
+        if ($this->db->update('sis_emp', $empr)) {
             $res['estatus'] = 1;
             $res['mensaje'] = 'Actualizado con Exito';
         } else {
@@ -161,7 +161,7 @@ public function get_empresas_sel($activos) {
         $res = array();
         $this->db->select('Rif');
         $this->db->where('Rif', $arr['Rif']);
-        $query1 = $this->db->get('SIS_EMP');
+        $query1 = $this->db->get('sis_emp');
         if ($query1->num_rows() > 0) {
             $res['status'] = 0;
             $res['mensaje'] = 'El usuario ya esta registrado';
@@ -170,7 +170,7 @@ public function get_empresas_sel($activos) {
 
         //$this->db->set('fecha_registro', 'GETDATE()', FALSE);
 
-        if ($this->db->insert('SIS_EMP', $arr)) {
+        if ($this->db->insert('sis_emp', $arr)) {
             $res['estatus'] = 1;
             $res['mensaje'] = 'Registrado con Exito';
         } else {

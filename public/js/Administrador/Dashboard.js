@@ -27,7 +27,7 @@ var id;
 $(window).load(function() {
 
       $scope.cargarSucursal();
-     
+     $scope.container2();
     var bool=true;
     for(var i in $scope.lib) {
      bool=false;
@@ -35,7 +35,7 @@ $(window).load(function() {
   
     clearTimeout(id);
     id = setTimeout($scope.container3, 250);
-    id = setTimeout($scope.container2, 250);
+    //id = setTimeout($scope.container2, 260);
     if(bool){
       //console.log('vacio');  
     }else{ id = setTimeout($scope.actualizarGrafica(), 250);}
@@ -47,9 +47,10 @@ $(window).resize(function() {
     for(var i in $scope.lib) {
      bool=false;
      }
+     $scope.container2(); 
     clearTimeout(id);
     id = setTimeout($scope.container3, 250);
-    id = setTimeout($scope.container2, 250);
+    //id = setTimeout($scope.container2, 250);
      if(bool){
       console.log('vacio');  
     }else{ $scope.actualizarGrafica();}
@@ -59,6 +60,7 @@ $(window).resize(function() {
             success(function(data, status, headers, config) {       
             $scope.sucursal_t=data;
             $scope.sucursal_t2=data;
+            console.log(data);
             $scope.lib2.CodSucu=$scope.sucursal_t2[0].id;
             $scope.lib.CodSucu=$scope.sucursal_t[0].id;
             $scope.actualizarGrafica();

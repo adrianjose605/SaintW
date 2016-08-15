@@ -43,7 +43,7 @@ angular.module('ngTasty.component.table', [
   bootstrapIcon: false,
   templateHeadUrl: 'template/table/head.html',
   templateUrl: 'template/table/pagination.html',
-  listItemsPerPage: [5, 25, 50, 100],
+  listItemsPerPage: [5, 50, 100,200],
   itemsPerPage: 5,
   watchResource: 'reference'
 })

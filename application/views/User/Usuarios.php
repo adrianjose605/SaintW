@@ -54,7 +54,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div tasty-pagination></div>
+                <div tasty-pagination style="width:100%"></div>
             </div>
 
 <!--NUEVO MODAL-->

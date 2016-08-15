@@ -47,13 +47,15 @@ angular.module('saint')
 		$http.get('User/GUsuarios/verG/'+id).
 			success(function(data, status, headers, config) {				
 					data.Permisos=data.Permisos=='1';
-					data.LibroVentaSucursal=data.LibroVentaSucursal=='1';
-					data.LibroVentaConsolidado=data.LibroVentaConsolidado=='1';
+					data.Lib_Sucu=data.Lib_Sucu=='1';
+					data.Lib_Consol=data.Lib_Consol=='1';
 					data.Facturacion=data.Facturacion=='1';
 					data.Estatus=data.Estatus=='1';
 					data.Usuarios=data.Usuarios=='1';
 					data.Empresas=data.Empresas=='1';
-			
+					data.Sucursales=data.Sucursales=='1';
+			data.Mensajes=data.Mensajes=='1';
+			data.Contactos=data.Contactos=='1';
 					$scope.permiso=data;					
 					//console.log($scope.alerta_nueva);
 					var $j = jQuery.noConflict();

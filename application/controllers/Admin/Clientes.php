@@ -1,16 +1,16 @@
 <?php
 
-class Empresas extends CI_Controller {
+class Clientes extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Empresas_model');
+        $this->load->model('Clientes_model');
     }    
     
 
      public function ver_sel($activos = true) {
         $res = array();
-        $result = $this->Empresas_model->get_empresas_sel($activos);
+        $result = $this->Clientes_model->get_usuarios_sel($activos);
         foreach ($result as $row) {
             $res[] = $row;
         }
@@ -19,21 +19,21 @@ class Empresas extends CI_Controller {
     /**
      * Creacion  de un nuevo pais
      */
-    public function nueva_empresa(){
-        echo json_encode($this->Empresas_model->insert_empresa());         
+    public function nuevo_clt(){
+        echo json_encode($this->Clientes_model->insert());         
     }
    
-    public function modificar_Empresas(){
-        echo json_encode($this->Empresas_model->edit_Empresas());         
+    public function modificar_clt(){
+        echo json_encode($this->Clientes_model->edit());         
     }
         
-    public function tabla_principal_Empresas($count = 5, $page = 1, $order = 'sis_emp.Nombre', $type = 'asc'){
+    public function tabla_principal_clientes($count = 5, $page = 1, $order = 'Descrip', $type = 'asc'){
          if ($type != 'asc') {
             $type = 'desc';
         }
         $ret = array();
         $inicio = $page * $count - $count;
-        $array = $this->Empresas_model->generar_json_tabla_principal($inicio, $count, $order, $type);
+        $array = $this->Clientes_model->generar_json_tabla_principal($inicio, $count, $order, $type);
 
         if ($type != 'asc') {
             $type = 'dsc';
@@ -61,34 +61,34 @@ class Empresas extends CI_Controller {
     }  
     
   
-    public function verE ($id=1){             
-        $result=$this->Empresas_model->get_Empresas($id);
+    public function ver ($id=1){             
+        $result=$this->Clientes_model->get($id);
         foreach ($result as $row) {
             echo  (json_encode( $row));
             break;
         }
     }
            
-     
+ 
 
     public function index() {
         $data['nombre'] = $this->session->userdata('nombre');
-        $data['title'] = 'Empresas';
+        $data['title'] = 'Usuarios';
 
         if (!$this->session->userdata('logueado')) {
 
-         redirect('Usuarios/acceso');
+         redirect('usuarios/acceso');
      } else{
          $this->load->model('Usuarios_model');
          $p=$this->Usuarios_model->permisos($this->session->userdata('permiso'));
-         if($p->Empresas==1){  
+         if($p->Contactos==1){  
 
             $data['Permisos']=$p->Permisos;
             $data['LVS']=$p->LibroVentaSucursal;
             $data['LV']=$p->LibroVentaConsolidado;
             $data['Facturacion']=$p->Facturacion;
             $data['Usuarios']=$p->Usuarios;
-            $data['Empresas']=$p->Empresas;
+              $data['Empresas']=$p->Empresas;
             $data['Sucursales']=$p->Sucursales;
              $data['Sms']=$p->Mensajes;
             $data['Contac']=$p->Contactos;
@@ -96,7 +96,7 @@ class Empresas extends CI_Controller {
 
         $this->load->view('templates/header');
         $this->load->view('navbars/admin',$data);
-        $this->load->view('Sys/Empresas');     
+        $this->load->view('Admin/Contactos');     
         $this->load->view('templates/footer');
         }else{
             redirect($last);  

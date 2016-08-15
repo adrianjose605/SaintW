@@ -45,39 +45,51 @@
                                 </div>
                                 
                                    <div class="form-group">
-                                    <md-switch ng-model="permiso2.LibroVentaConsolidado">
+                                    <md-switch ng-model="permiso2.Lib_Consol">
                                        Libro de Ventas Consolidado
                                     </md-switch>
                                 </div> 
                                    <div class="form-group">
-                                    <md-switch ng-model="permiso2.LibroVentaSucursal">
+                                    <md-switch ng-model="permiso2.Lib_Sucu">
                                             Libro de Ventas por sucursal
                                     </md-switch>
                                 </div> 
                                   
                                    <div class="form-group">
                                     <md-switch ng-model="permiso2.Facturacion">
-                                        Informacion de Ventas
+                                        Facturacion
                                     </md-switch>
                                 </div> 
                               <div class="form-group">
                                     <md-switch ng-model="permiso2.Usuarios">
-                                        Crear usuarios
+                                       usuarios
                                     </md-switch>
                                 </div> 
                                 <div class="form-group">
                                     <md-switch ng-model="permiso2.Permisos">
-                                        Cambiar Permisos
+                                       Permisos
                                     </md-switch>
                                 </div>
                                 <div class="form-group">
                                     <md-switch ng-model="permiso2.Empresas">
-                                        Control de Empresas
+                                        Empresas
+                                    </md-switch>
+                                </div><div class="form-group">
+                                    <md-switch ng-model="permiso2.Sucursales">
+                                        Sucursales
+                                    </md-switch>
+                                </div><div class="form-group">
+                                    <md-switch ng-model="permiso2.Mensajes">
+                                        Mensajes
+                                    </md-switch>
+                                </div><div class="form-group">
+                                    <md-switch ng-model="permiso2.Contactos">
+                                        Contactos
                                     </md-switch>
                                 </div>
                                 <div class="form-group">
                                     <md-switch ng-model="permiso2.Estatus">
-                                        Grupo Activo
+                                        Estatus
                                     </md-switch>
                                 </div>
 
@@ -103,8 +115,8 @@
                         <tr ng-repeat="row in rows" class="centrado">
 
                             <td>{{ row.Descripcion}}</td>
-                            <td><span class="glyphicon" ng-class="( (row.LibroVentaSucursal==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
-                            <td><span class="glyphicon" ng-class="( (row.LibroVentaConsolidado==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
+                            <td><span class="glyphicon" ng-class="( (row.Lib_Sucu==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
+                            <td><span class="glyphicon" ng-class="( (row.Lib_Consol==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
                             <td><span class="glyphicon" ng-class="( (row.Facturacion==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
                           
                             <td><span class="glyphicon" ng-class="( (row.Usuarios==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
@@ -112,10 +124,17 @@
 
                             <td><span class="glyphicon" ng-class="( (row.Permisos==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
 
-                            <td><span class="glyphicon" ng-class="( (row.Estatus==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
+                                                       
+                            <td><span class="glyphicon" ng-class="( (row.Empresas==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>  
+                             <td><span class="glyphicon" ng-class="( (row.Sucursales==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>        
                             
-                            <td><span class="glyphicon" ng-class="( (row.Empresas==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
+                            <td><span class="glyphicon" ng-class="( (row.Estatus==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')"  aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
 
+                            <td><span class="glyphicon" ng-class="( (row.Mensajes==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td> 
+
+                            <td><span class="glyphicon" ng-class="( (row.Contactos==1) ? 'mdi-action-done activo' : 'mdi-action-highlight-remove inactivo')" aria-hidden="true" title="ACTIVO" style="color:green"></span></td>
+
+                            
 
                             <td>
                                 <div class="btn-group">
@@ -157,12 +176,12 @@
                                 </div>
                                 
                                    <div class="form-group">
-                                    <md-switch ng-model="permiso.LibroVentaConsolidado">
+                                    <md-switch ng-model="permiso.Lib_Consol">
                                        Libro de Ventas Consolidado
                                     </md-switch>
                                 </div> 
                                    <div class="form-group">
-                                    <md-switch ng-model="permiso.LibroVentaSucursal">
+                                    <md-switch ng-model="permiso.Lib_Sucu">
                                             Libro de Ventas por sucursal
                                     </md-switch>
                                 </div> 
@@ -186,10 +205,23 @@
                                     <md-switch ng-model="permiso.Empresas">
                                         Empresas
                                     </md-switch>
+                                </div> <div class="form-group">
+                                    <md-switch ng-model="permiso.Sucursales">
+                                        Sucursales
+                                    </md-switch>
+                                </div>
+                                  <div class="form-group">
+                                    <md-switch ng-model="permiso.Mensajes">
+                                        Mensajes
+                                    </md-switch>
+                                </div>  <div class="form-group">
+                                    <md-switch ng-model="permiso.Contactos">
+                                        Contactos
+                                    </md-switch>
                                 </div>
                                 <div class="form-group">
                                     <md-switch ng-model="permiso.Estatus">
-                                        Grupo Activo
+                                        Estatus
                                     </md-switch>
                                 </div>
 

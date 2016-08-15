@@ -75,7 +75,7 @@ public function cerrar(){
         $this->session->set_userdata($usuario_data);
 
          if ($usuario_data['logueado']==TRUE and $usuario_data['estatus']==1){
-             redirect('Admin/Saa_Libs/Dashboard');
+             redirect('Admin/Saa_libs/Dashboard');
             }else{
                $usuario_data = array(   
                'mensaje' => 'Su usuario se encutra bloqueado, si considera que esto es un error comuniquese con 3D Vision C.A.',            

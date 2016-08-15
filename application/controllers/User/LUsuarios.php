@@ -27,7 +27,7 @@ class LUsuarios extends CI_Controller {
         echo json_encode($this->Usuarios_model->edit_usuarios());         
     }
         
-    public function tabla_principal_usuarios($count = 5, $page = 1, $order = 'SIS_USUARIO.Nombre', $type = 'asc'){
+    public function tabla_principal_usuarios($count = 5, $page = 1, $order = 'sis_usuario.Nombre', $type = 'asc'){
          if ($type != 'asc') {
             $type = 'desc';
         }

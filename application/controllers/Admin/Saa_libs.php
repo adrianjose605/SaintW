@@ -103,7 +103,7 @@ class Saa_libs extends CI_Controller {
      } else{
          $this->load->model('Usuarios_model');
          $p=$this->Usuarios_model->permisos($this->session->userdata('permiso'));
-         if($p->LibroVentaConsolidado==1){  
+         //if($p->LibroVentaConsolidado==1){  
 
             $data['Permisos']=$p->Permisos;
             $data['LVS']=$p->LibroVentaSucursal;
@@ -120,9 +120,9 @@ class Saa_libs extends CI_Controller {
             $this->load->view('navbars/admin',$data);
             $this->load->view('Admin/Dashboard');     
             $this->load->view('templates/footer');
-        }else{
-            redirect('usuarios/acceso');  
-        }
+        //}else{
+           // redirect('usuarios/acceso');  
+       // }
 
     }
 }

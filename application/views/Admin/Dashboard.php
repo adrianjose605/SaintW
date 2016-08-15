@@ -5,6 +5,8 @@
         <script src="public/highcharts/highcharts-3d.js"></script>
         <script src="public/highcharts/exporting.js"></script>   
 <div class="marca_250"></div>
+
+<!-- graf 1 -->
 <div class="col-md-12 col-lg-12 col-xs-12" flex id="content" ng-controller="Dashboard" ng-cloak>
     
 <div class="col-md-12 col-xs-12 col-lg-12" style="margin-top: 5%">
@@ -36,7 +38,7 @@
             </div>
         </div>
 </div>
-    
+   <!-- graf 1 --> 
 <div  class="col-md-12 col-xs-12 col-lg-12" style="position: relative;" ng-cloak>
 
 <div class="col-md-12 col-xs-12 col-lg-12">
@@ -63,7 +65,7 @@
     </div>
 </div>
 
-
+<!-- graf 2 -->
 <div class="col-md-12 col-xs-12 col-lg-12" style="position: relative;" ng-cloak>
     <div class="col-md-12 col-xs-12 col-lg-12">
          <div class="col-xs-6 col-md-4  col-lg-4">
@@ -85,7 +87,7 @@
         </div>
 
 </div>
-
+<!-- graf 3 -->
 <div class="col-md-12 col-xs-12 col-lg-12 " style="">
     <div class="col-md-12 col-xs-12 col-lg-12 ">
      

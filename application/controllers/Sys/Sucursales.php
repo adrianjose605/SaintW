@@ -27,7 +27,7 @@ class Sucursales extends CI_Controller {
         echo json_encode($this->sucursal_model->edit_sucursal());         
     }
         
-    public function tabla_principal_suc($count = 5, $page = 1, $order = 'SASUCU.Descrip', $type = 'asc'){
+    public function tabla_principal_suc($count = 5, $page = 1, $order = 'sasucu.Descrip', $type = 'asc'){
          if ($type != 'asc') {
             $type = 'desc';
         }
