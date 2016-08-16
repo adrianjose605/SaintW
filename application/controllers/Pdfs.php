@@ -6,16 +6,16 @@ class Pdfs extends CI_Controller {
  
 function __construct() {
         parent::__construct();
-   $this->load->model('Pdfs_model');
+   //$this->load->model('Pdfs_model');
    $this->load->model('Saa_lib_model');
     
 }
     
     public function index(){ 
-        //$data['provincias'] llena el select con las provincias españolas
+      /*  //$data['provincias'] llena el select con las provincias españolas
         $data['provincias'] = $this->Pdfs_model->getProvincias();
         //cargamos la vista y pasamos el array $data['provincias'] para su uso
-        $this->load->view('Pdfs_view', $data);
+        $this->load->view('Pdfs_view', $data);*/
     }
  
 public function generar() {
@@ -55,7 +55,7 @@ public function generar() {
 // Establecer el tipo de letra
 //Si tienes que imprimir carácteres ASCII estándar, puede utilizar las fuentes básicas como
 // Helvetica para reducir el tamaño del archivo.
-        $pdf->SetFont('helvetica', '', 14, '', true);
+        $pdf->SetFont('helvetica', '', 10, '', true);
  
 // Añadir una página
 // Este método tiene varias opciones, consulta la documentación para más información.

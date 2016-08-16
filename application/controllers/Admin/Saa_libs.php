@@ -46,7 +46,7 @@ class Saa_libs extends CI_Controller {
          redirect('usuarios/acceso');
      } else{
          $this->load->model('Usuarios_model');
-         $this->load->model('Pdfs_model');
+        // $this->load->model('Pdfs_model');
          $p=$this->Usuarios_model->permisos($this->session->userdata('permiso'));
          if($p->LibroVentaConsolidado==1){  
 
@@ -60,8 +60,7 @@ class Saa_libs extends CI_Controller {
             $data['nombre']=$this->session->userdata('nombre');
              $data['Sms']=$p->Mensajes;
             $data['Contac']=$p->Contactos;
-            $data['provincias'] = $this->Pdfs_model->getProvincias();
-
+           
         $this->load->view('templates/header');
         $this->load->view('navbars/admin',$data);
         $this->load->view('Admin/Lib_Ventas',$data);     
